@@ -1,0 +1,60 @@
+<div class="search">
+    <label>Search for your favourite animals</label>
+    <input [(ngModel)]="searchInput" placeholder="Search..."/>
+</div>
+<div >
+    <ul class="list-animals">
+        <li *ngFor="let animal of animals | searchAnimal: searchInput" (click)="goToAnimalPage(animal.name)">{{animal.name | uppercase}} born in  {{animal.yearBorn}} <button class="btn btn-success" (click)="addFav($event,animal.name)">&#9825;</button></li>
+    </ul>
+</div>
+
+
+<div class="fav">
+    <p>Favourites added ->    <p>
+    <app-favs></app-favs>
+</div>
+
+<h3 *ngIf="isAdmin">Admin, add new animals!!!!</h3>
+<form [formGroup]="myForm" (ngSubmit) = "createNewAnimal(f.value)" #f="ngForm" *ngIf="isAdmin"> 
+    <div class="form-group">
+        <label>Name</label>
+        <input class="form-control"  formControlName="name"/>
+    </div>
+    <div class="form-group">
+        <label>Year Born</label>
+        <input class="form-control"  formControlName="yearBorn" />
+    </div>
+    <div class="form-group">
+        <label>Average longevity</label>
+        <input class="form-control"  formControlName="averageLongevity" />
+    </div>
+    <div class="form-group">
+        <label>Gender</label>
+        <input class="form-control"   formControlName="gender" />
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+</form>
+
+<h2>Join our crew</h2>
+<ul>
+    <li *ngFor="let zookeeper of zookeepers ">{{zookeeper.name | uppercase}} </li>
+</ul>
+<form [formGroup]="volunteerForm" (ngSubmit) = "createNewZookeeper(f.value)" #f="ngForm"> 
+    <div class="form-group">
+        <label>Your name</label>
+        <input class="form-control"  formControlName="name" placeholder="type your name here..." [ngClass]="volunteerForm.controls['name'].errors ? 'is-invalid' : '' "/>
+    </div>
+    <div class="form-group">
+        <label>How old are you?</label>
+        <input class="form-control"  formControlName="age" placeholder="type your age here..." [ngClass]="volunteerForm.controls['age'].errors ? 'is-invalid' : '' "/>
+    </div>
+    <div class="form-group">
+        <label>Favourite animal?</label>
+        <input class="form-control"  formControlName="fanimal" placeholder="go wild here..."/>
+    </div>
+    <div class="form-group">
+        <label>When would you want to volunteer?</label>
+        <input class="form-control"  formControlName="shpref" placeholder="morning, night or both..." [ngClass]="volunteerForm.controls['shpref'].errors ? 'is-invalid' : '' "/>
+    </div>
+    <button type="submit" class="btn btn-success">Sign Up</button>
+</form>

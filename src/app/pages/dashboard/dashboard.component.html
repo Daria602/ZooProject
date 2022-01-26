@@ -1,0 +1,10 @@
+<input [(ngModel)]="searchInput" placeholder="Search..."/>
+<ul>
+    <li *ngFor="let user of users | searchText: searchInput">{{user.userName}} {{user.userEmail}}</li>
+</ul>
+
+<h4>Delete user (not really)</h4>
+
+<ul>
+    <li *ngFor="let user of users"><app-user-info [name]="user.userName" [email]="user.userEmail" (onDeleteUser)="removeUser($event)"></app-user-info></li>
+</ul>

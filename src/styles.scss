@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+*{
+    color:rgb(14, 83, 49);
+}
+
+.btn{
+    color: #4e0639;
+    background-color: #d38cd3;
+    border: 2px solid #4e0639;
+    height: 37px;
+    width: auto;
+    padding:2px;
+    transition:all 1s;
+}
+
+.search{
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-weight: bold;
+    
+}
+
+.btn:hover{
+    color: #d38cd3;
+    background-color: #4e0639;
+    border: 2px solid #4e0639;
+
+}
+
+.list-animals{
+    color:rgb(14, 83, 49);
+    padding-left: 40%;
+
+}
+.fav{
+    display: flex;
+    justify-content: center;
+}
